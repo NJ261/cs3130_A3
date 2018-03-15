@@ -6,18 +6,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class CreateContactAcitivity extends Activity {
 
     private Button submitButton;
     private EditText nameField, emailField;
     private MyApplicationData appState;
+    Contact receivedPersonInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_contact_acitivity);
         //Get the app wide shared variables
+
+        receivedPersonInfo = (Contact)getIntent().getSerializableExtra("Contact");
         appState = ((MyApplicationData) getApplicationContext());
+
 
         submitButton = (Button) findViewById(R.id.submitButton);
         nameField = (EditText) findViewById(R.id.name);
