@@ -26,6 +26,7 @@ public class DetailViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
+
         receivedPersonInfo = (Contact)getIntent().getSerializableExtra("Contact");
         appState = ((MyApplicationData) getApplicationContext());
         nameField = (EditText) findViewById(R.id.name);
@@ -49,6 +50,7 @@ public class DetailViewActivity extends Activity {
         dropdown2.setAdapter(adapter2);
         dropdown2.setSelection(0);
 
+        // for user's existed data to load when user click any items from list
         if(receivedPersonInfo != null){
             nameField.setText(receivedPersonInfo.name);
             emailField.setText(receivedPersonInfo.email);
@@ -57,6 +59,13 @@ public class DetailViewActivity extends Activity {
         }
     }
 
+    /**
+     *
+     * @param v on click listener for update button
+     *          it takes user's information which they want to update in their contact.
+     *          it has already their data preloaded in the fields, once update button is clicked
+     *          the changed information will get updated on firebase and list items.
+     */
     public void updateContact(View v){
 
         String uID = receivedPersonInfo.uid;
@@ -77,6 +86,12 @@ public class DetailViewActivity extends Activity {
 
     }
 
+    /**
+     *
+     * @param v on click listener for erase contact button
+     *          when user press this button it will remove the user's details from firebase and
+     *          from the list items as well.
+     */
     public void eraseContact(View v)
     {
         String uID = receivedPersonInfo.uid;

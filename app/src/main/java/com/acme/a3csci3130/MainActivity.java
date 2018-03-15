@@ -53,12 +53,24 @@ public class MainActivity extends Activity {
         });
     }
 
+    /**
+     *
+     * @param v on click listener for create button on main screen
+     *          it will redirect to another activity which takes user's contact details
+     */
     public void createContactButton(View v)
     {
         Intent intent=new Intent(this, CreateContactAcitivity.class);
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param person Here, this will gets the user's information from firebase with the help of contact class
+     *               here we have provided person as argument.
+     *               when a user selects any item from list items it will redirect to new activity
+     *               which will ask them to modify the details and give options to delete it
+     */
     private void showDetailView(Contact person)
     {
         Intent intent = new Intent(this, DetailViewActivity.class);

@@ -10,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 public class MyApplicationData extends Application {
-
+    //firebase instances declaration so that we can use it another part of the project.
     public DatabaseReference firebaseReference;
     public FirebaseDatabase firebaseDBInstance;
 

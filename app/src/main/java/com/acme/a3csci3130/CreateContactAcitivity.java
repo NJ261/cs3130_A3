@@ -30,30 +30,37 @@ public class CreateContactAcitivity extends Activity {
         receivedPersonInfo = (Contact)getIntent().getSerializableExtra("Contact");
         appState = ((MyApplicationData) getApplicationContext());
 
-
         submitButton = (Button) findViewById(R.id.submitButton);
         nameField = (EditText) findViewById(R.id.name);
         emailField = (EditText) findViewById(R.id.email);
         userNumber = (EditText) findViewById(R.id.userNumber);
         userAddress = (EditText) findViewById(R.id.userAddress);
 
-
+        /**
+         * 2 spinners are used
+         * 1st > dropdown1 is for BusinessType
+         * 2nd > dropdown2 is for Province
+         */
         dropdown1 = (Spinner) findViewById(R.id.spinner1);
         String[] items = new String[]{"Fisher", " Distributor", " Processor", "Fish Monger" };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        //set the spinners adapter to the previously created one.
         dropdown1.setAdapter(adapter);
         dropdown1.setSelection(0);
-
 
         dropdown2 = (Spinner) findViewById(R.id.spinner2);
         String[] items2 = new String[]{" ", "AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"} ;
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items2);
-        //set the spinners adapter to the previously created one.
         dropdown2.setAdapter(adapter2);
         dropdown2.setSelection(0);
     }
 
+    /**
+     *
+     * @param v: onclick listener for submit button
+     *         this will take user's name, email, address, businesstype, province and upload it to the firebase
+     *         and further this details gets populated in the list.
+     *
+     */
     public void submitInfoButton(View v) {
         //each entry needs a unique ID
         String personID = appState.firebaseReference.push().getKey();
