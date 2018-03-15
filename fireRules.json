@@ -3,14 +3,29 @@
     ".read": "true",
     ".write": "true",
     "contacts": {
-            "$contact": {
-                "name": {
-                    ".validate": "newData.isString() && newData.val().length < 50"
-                },
-                "email": {
-                    ".validate": "newData.isString() && newData.val().matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$/i)"
-                }
-            }
+      "$contact": {
+        "uid": {
+          ".validate": "newData.hasChildren(['name', 'number', 'businessType'])"
+        },
+        "name": {
+          ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 48"
+        },
+        "email": {
+          ".validate": "newData.isString() && newData.val().matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$/i)"
+        },
+        "number":{
+          ".validate": "newData.isString() && newData.val().length == 9 && newData.val().matches(/^[0-9]+$/)"
+        },
+        "businessType": {
+          ".validate": "newData.isString() && newData.val().matches(/^(Fisher | Distributor | Fish Monger | Processor )$/)"
+        },
+        "province": {
+          ".validate": "newData.val().matches(/^(AB|BC|MB|NB|NL|NT|NU|ON|PE|QC|SK|YT| )$/)"
+        },
+        "address": {
+          ".validate": "newData.isString() && newData.val().length < 50"
         }
+      }
+    }
   }
 }
