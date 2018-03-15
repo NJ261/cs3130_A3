@@ -6,6 +6,8 @@
 3. Contact Class edited for other information such as (Business Type, Province, Contact Number, User Address)
 4. Firebase rules are implemeted (firebase.json file)
 5. javadoc implemented too
-6. Espresso Test to check the app: Create, Update, Delete
+6. Espresso Test to check the app: Create, Read, Update, Delete
+
+Here, I have added screenshots of espresso tests, working application, stored real-time data in firebase, firebase rules in "Screenshots" folder.
 
 ### Note: When I make commit from Android Studio directly it shows commit by name "Nirav Jadeja" and other wise it shows my username "NJ261". Kindly note this while grading this assignment. 
