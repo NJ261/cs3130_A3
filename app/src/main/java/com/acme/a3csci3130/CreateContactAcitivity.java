@@ -42,7 +42,7 @@ public class CreateContactAcitivity extends Activity {
          * 2nd > dropdown2 is for Province
          */
         dropdown1 = (Spinner) findViewById(R.id.spinner1);
-        String[] items = new String[]{"Fisher", " Distributor", " Processor", "Fish Monger" };
+        String[] items = new String[]{"Fisher", "Distributor", "Processor", "Fish Monger" };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown1.setAdapter(adapter);
         dropdown1.setSelection(0);

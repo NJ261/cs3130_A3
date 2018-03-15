@@ -36,7 +36,7 @@ public class DetailViewActivity extends Activity {
 
         // spinner 1: for business type
         dropdown1 = (Spinner) findViewById(R.id.spinner1);
-        String[] items = new String[]{"Fisher", " Distributor", " Processor", "Fish Monger" };
+        String[] items = new String[]{"Fisher", "Distributor", "Processor", "Fish Monger" };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         //set the spinners adapter to the previously created one.
         dropdown1.setAdapter(adapter);

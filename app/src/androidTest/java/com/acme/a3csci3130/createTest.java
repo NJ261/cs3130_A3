@@ -52,7 +52,7 @@ public class createTest {
      * it will store the data to firebase and also it will populate the list items
      */
     @Test
-    public void a_createTest() throws Exception {
+    public void espressoTest_create() throws Exception {
         String name = "Nirav Jadeja";
         String email = "nirav9033@gmail.com";
         String number = "123123123";
@@ -83,18 +83,19 @@ public class createTest {
      * in this activity this test will change the user's contact number and will update it again by clicking the update button
      * at last it will show the list items
      */
+
     @Test
-    public void b_updateTest() throws Exception {
+    public void espressoTest_update() throws Exception {
 
         String replaceText = "999888777";
-        Thread.sleep(1000); // 1 seconds delay
+        Thread.sleep(3000); // time delay
 
         onView(withId((R.id.listView))).perform(click());
         onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).perform(click()); //opening a list item
 
         onView(withId((R.id.userNumber))).perform(click()).perform(replaceText(replaceText), closeSoftKeyboard()); // replacing data
 
-        Thread.sleep(1000); // 1 seconds delay
+        Thread.sleep(3000); // time delay
 
         onView(withId(R.id.updateButton)).perform(new GeneralClickAction(Tap.SINGLE, GeneralLocation.CENTER, Press.FINGER));
     }
@@ -104,19 +105,52 @@ public class createTest {
      * here is the delete test which opens a list item and delete the item once it clicks on erase button
      */
     @Test
-    public void c_deleteTest() throws Exception {
+    public void espressoTest_delete() throws Exception {
 
-        Thread.sleep(1000); // 1 seconds delay
+        Thread.sleep(3000); // time delay
 
         onView(withId((R.id.listView))).perform(click());
         onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).perform(click()); //opening a list item
 
-        Thread.sleep(1000);
+        Thread.sleep(3000); // time delay
 
         onView(withId(R.id.deleteButton)).perform(new GeneralClickAction(Tap.SINGLE, GeneralLocation.CENTER, Press.FINGER));
     }
 
+    /**
+     *
+     * @throws Exception : Read test operation
+     * here we check data in the list element with the other string text and if it matches test will be passed.
+     */
+    @Test
+    public void espressoTest_read() throws Exception {
 
+        String name = "Nirav Jadeja";
+        String email = "nirav9033@gmail.com";
+        String number = "123123123";
+        String address = "Halifax, Canada";
+
+        Thread.sleep(1000); // time delay for one second
+        onView(withId(R.id.listView));
+        onData(anything()).inAdapterView(allOf(withId(R.id.listView),isCompletelyDisplayed())).atPosition(0).perform(click());
+
+        //comparing the values for all the fields
+        onView(withId((R.id.name))).check(matches(withText(name))); // checking name
+
+        onView(withId((R.id.userNumber))).check(matches(withText(number))); // checking number
+
+        onView(withId((R.id.email))).check(matches(withText(email))); // checking email
+
+        onView(withId((R.id.userAddress))).check(matches(withText(address))); // checking address
+
+        onView(withId(R.id.spinner1)).perform(click());
+        onData(anything()).atPosition(1).perform(click());
+        onView(withId(R.id.spinner1)).check(matches(withSpinnerText(containsString("Distributor")))); // checking 1st spinner - business type
+
+        onView(withId(R.id.spinner2)).perform(click());
+        onData(anything()).atPosition(6).perform(click());
+        onView(withId(R.id.spinner2)).check(matches(withSpinnerText(containsString("NS")))); // checking 2nd spinner - province
+    }
 }
 
 
