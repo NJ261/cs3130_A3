@@ -52,10 +52,16 @@ public class DetailViewActivity extends Activity {
 
         // for user's existed data to load when user click any items from list
         if(receivedPersonInfo != null){
-            nameField.setText(receivedPersonInfo.name);
-            emailField.setText(receivedPersonInfo.email);
-            userNumber.setText(receivedPersonInfo.number);
-            userAddress.setText(receivedPersonInfo.address);
+            nameField.setText(receivedPersonInfo.name); // getting user's saved data - name
+            emailField.setText(receivedPersonInfo.email); // getting user's saved data - email
+            userNumber.setText(receivedPersonInfo.number); // getting user's saved data - number
+            userAddress.setText(receivedPersonInfo.address); // getting user's saved data - address
+
+            int businessType = adapter.getPosition(receivedPersonInfo.businessType); // getting user's saved data - business type
+            dropdown1.setSelection(businessType);
+
+            int province = adapter2.getPosition(receivedPersonInfo.province); // getting user's saved data - province
+            dropdown2.setSelection(province);
         }
     }
 
